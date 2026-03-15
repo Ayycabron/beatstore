@@ -1,0 +1,51 @@
+[
+  {
+    "name": "MIDNIGHT DRIP",
+    "bpm": 140,
+    "key": "Am",
+    "tag": "TRAP",
+    "price": 30
+  },
+  {
+    "name": "GOLDEN ERA",
+    "bpm": 95,
+    "key": "Gm",
+    "tag": "HIP-HOP",
+    "price": 30
+  },
+  {
+    "name": "BLACK MAMBA",
+    "bpm": 148,
+    "key": "Dm",
+    "tag": "TRAP",
+    "price": 30
+  },
+  {
+    "name": "TOKYO NIGHTS",
+    "bpm": 135,
+    "key": "Fm",
+    "tag": "TRAP",
+    "price": 30
+  },
+  {
+    "name": "VELVET SMOKE",
+    "bpm": 88,
+    "key": "Bm",
+    "tag": "HIP-HOP",
+    "price": 30
+  },
+  {
+    "name": "CHROME VISION",
+    "bpm": 142,
+    "key": "Em",
+    "tag": "TRAP",
+    "price": 30
+  },
+  {
+    "name": "LAST PROPHET",
+    "bpm": 92,
+    "key": "Cm",
+    "tag": "HIP-HOP",
+    "price": 30
+  }
+]
