@@ -1,0 +1,156 @@
+{
+  "_meta": {
+    "description": "Blueprint Make — Dropbox → Beatstore Théo Hamel",
+    "version": "1.0",
+    "instructions": "Importer ce fichier dans Make via : Scenarios → Import Blueprint"
+  },
+
+  "name": "Beatstore — Dropbox → Catalogue + Email",
+
+  "flow": [
+    {
+      "id": 1,
+      "module": "dropbox:WatchFiles",
+      "label": "1. Surveille le dossier /beatstore/new/",
+      "parameters": {
+        "folder": "/beatstore/new",
+        "file_type": "mp3",
+        "watch_type": "new_files"
+      },
+      "note": "Crée ce dossier dans ta Dropbox. Glisse tes MP3 dedans pour déclencher le pipeline."
+    },
+    {
+      "id": 2,
+      "module": "dropbox:DownloadFile",
+      "label": "2. Télécharge le MP3",
+      "parameters": {
+        "file_path": "{{1.path}}"
+      }
+    },
+    {
+      "id": 3,
+      "module": "dropbox:CreateSharedLink",
+      "label": "3. Génère le lien public Dropbox",
+      "parameters": {
+        "path": "{{1.path}}",
+        "settings": { "requested_visibility": "public" }
+      },
+      "note": "Remplace 'www.dropbox.com' par 'dl.dropboxusercontent.com' et supprime '?dl=0' à l'étape suivante via un text transformer."
+    },
+    {
+      "id": 4,
+      "module": "builtin:BasicTextTransformer",
+      "label": "4. Transforme le lien en lien direct",
+      "parameters": {
+        "value": "{{replace(replace(3.url, 'www.dropbox.com', 'dl.dropboxusercontent.com'), '?dl=0', '')}}"
+      }
+    },
+    {
+      "id": 5,
+      "module": "builtin:BasicTextTransformer",
+      "label": "5. Parse le nom du fichier",
+      "parameters": {
+        "value": "{{replace(1.name, '.mp3', '')}}",
+        "note": "Convention : NOM_140bpm_Am_TRAP.mp3 → extraire chaque partie"
+      }
+    },
+    {
+      "id": 6,
+      "module": "builtin:SetVariables",
+      "label": "6. Extrait BPM, Key, Tag, Prix du nom de fichier",
+      "parameters": {
+        "variables": [
+          { "name": "beat_name",  "value": "{{toUpperCase(split(5.value, '_')[0])}}" },
+          { "name": "bpm",        "value": "{{replace(split(5.value, '_')[1], 'bpm', '')}}" },
+          { "name": "key",        "value": "{{split(5.value, '_')[2]}}" },
+          { "name": "tag",        "value": "{{ifempty(split(5.value, '_')[3], 'TRAP')}}" },
+          { "name": "price",      "value": "{{ifempty(split(5.value, '_')[4], '30')}}" }
+        ],
+        "note": "Convention de nommage fichier : NOM DU BEAT_140bpm_Am_TRAP_30.mp3"
+      }
+    },
+    {
+      "id": 7,
+      "module": "http:ActionSendData",
+      "label": "7. Envoie le beat au webhook Netlify (add-beat)",
+      "parameters": {
+        "url": "https://beats-theohamel.com/api/add-beat",
+        "method": "POST",
+        "headers": [
+          { "name": "Content-Type", "value": "application/json" },
+          { "name": "x-make-secret", "value": "{{MAKE_WEBHOOK_SECRET}}" }
+        ],
+        "body": {
+          "name":        "{{6.beat_name}}",
+          "bpm":         "{{6.bpm}}",
+          "key":         "{{6.key}}",
+          "tag":         "{{6.tag}}",
+          "price":       "{{6.price}}",
+          "dropbox_url": "{{4.value}}",
+          "duration":    "0:00"
+        }
+      },
+      "note": "Remplace MAKE_WEBHOOK_SECRET par ta vraie valeur (variable d'env Make)."
+    },
+    {
+      "id": 8,
+      "module": "builtin:JSONParser",
+      "label": "8. Parse la réponse Netlify",
+      "parameters": {
+        "data": "{{7.data}}"
+      }
+    },
+    {
+      "id": 9,
+      "module": "mailchimp:CreateCampaign",
+      "label": "9. Crée la campagne email Mailchimp",
+      "parameters": {
+        "list_id":    "VOTRE_LIST_ID_MAILCHIMP",
+        "subject":    "🎵 Nouveau beat dispo : {{6.beat_name}}",
+        "from_name":  "Théo Hamel",
+        "reply_to":   "contact@beats-theohamel.com",
+        "campaign_type": "regular",
+        "note": "Ou utilise le module Gmail / Sendinblue si tu n'as pas Mailchimp"
+      }
+    },
+    {
+      "id": 10,
+      "module": "mailchimp:SetCampaignContent",
+      "label": "10. Contenu de l'email",
+      "parameters": {
+        "campaign_id": "{{9.id}}",
+        "html": "<html><body style='font-family:Arial,sans-serif;background:#0B0A12;color:#F0ECFF;padding:40px;max-width:600px;margin:0 auto'><div style='text-align:center;margin-bottom:30px'><h1 style='font-family:Georgia,serif;color:#9D5CF6;font-size:32px;letter-spacing:4px;margin:0'>THÉO HAMEL</h1><p style='color:#8B87A8;font-size:11px;letter-spacing:3px;margin:4px 0'>BEATSTORE</p></div><div style='background:#110F1C;border:1px solid rgba(124,58,237,0.3);padding:30px;margin-bottom:24px'><p style='color:#9D5CF6;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin:0 0 12px'>Nouveau beat disponible</p><h2 style='color:#F0ECFF;font-size:28px;letter-spacing:3px;margin:0 0 16px'>{{6.beat_name}}</h2><table style='width:100%;font-size:12px;color:#8B87A8;font-family:monospace'><tr><td>BPM</td><td style='color:#C4B5FD'>{{6.bpm}}</td><td>Tonalité</td><td style='color:#C4B5FD'>{{6.key}}</td></tr><tr><td>Style</td><td style='color:#C4B5FD'>{{6.tag}}</td><td>Prix</td><td style='color:#C4B5FD'>à partir de {{6.price}}€</td></tr></table></div><div style='text-align:center'><a href='https://beats-theohamel.com/#beats' style='display:inline-block;background:#7C3AED;color:white;padding:14px 32px;text-decoration:none;font-family:monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase'>Écouter & Acheter</a></div><p style='color:#8B87A8;font-size:10px;text-align:center;margin-top:30px'>beats-theohamel.com · <a href='*|UNSUB|*' style='color:#9D5CF6'>Se désabonner</a></p></body></html>"
+      }
+    },
+    {
+      "id": 11,
+      "module": "mailchimp:SendCampaign",
+      "label": "11. Envoie l'email à la liste",
+      "parameters": {
+        "campaign_id": "{{9.id}}"
+      }
+    },
+    {
+      "id": 12,
+      "module": "dropbox:MoveFile",
+      "label": "12. Archive le MP3 dans /beatstore/published/",
+      "parameters": {
+        "from_path": "{{1.path}}",
+        "to_path":   "/beatstore/published/{{1.name}}"
+      },
+      "note": "Déplace le fichier hors de /new/ pour éviter de le retraiter."
+    }
+  ],
+
+  "error_handling": {
+    "on_error": "SendEmailToProducer",
+    "email": "contact@beats-theohamel.com",
+    "subject": "❌ Erreur pipeline beatstore — {{1.name}}"
+  },
+
+  "schedule": {
+    "type": "watch",
+    "interval_minutes": 15,
+    "note": "Vérification toutes les 15 minutes. Passe à 5 min si tu veux plus rapide (consomme plus d'opérations Make)."
+  }
+}

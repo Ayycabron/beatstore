@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGV / CGU — beats-theohamel.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--v1:#7C3AED;--v2:#9D5CF6;--v3:#C4B5FD;--dark:#0B0A12;--dark2:#110F1C;--dark3:#1A1730;--white:#F0ECFF;--muted:#8B87A8;--border:rgba(124,58,237,0.25)}
+body{background:var(--dark);color:var(--white);font-family:'Inter',sans-serif;font-weight:300;line-height:1.8}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(11,10,18,.96);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:4px;color:var(--v2);text-decoration:none}
+.nav-back{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--v2)}
+.container{max-width:800px;margin:0 auto;padding:7rem 2.5rem 5rem}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:4px;color:var(--white);margin-bottom:.3rem}
+.page-sub{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:3px;color:var(--v2);margin-bottom:.5rem}
+.page-date{font-size:.8rem;color:var(--muted);margin-bottom:3rem;font-family:'Space Mono',monospace}
+.toc{background:var(--dark2);border:1px solid var(--border);padding:1.5rem 2rem;margin-bottom:3rem}
+.toc-title{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--v2);margin-bottom:1rem}
+.toc a{display:block;font-size:.82rem;color:var(--muted);text-decoration:none;padding:.2rem 0;transition:color .2s}
+.toc a:hover{color:var(--v2)}
+.toc a::before{content:"→ ";color:var(--v1)}
+h2{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;color:var(--white);margin:2.5rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+h3{font-family:'Space Mono',monospace;font-size:.82rem;font-weight:700;color:var(--v2);margin:1.5rem 0 .6rem;letter-spacing:1px}
+p{font-size:.9rem;color:var(--muted);margin-bottom:.8rem}
+.highlight{background:var(--dark2);border-left:3px solid var(--v1);padding:1rem 1.2rem;margin:1rem 0;font-size:.85rem;color:var(--white)}
+.highlight.warn{border-color:#e67e22;background:#1a1200}
+.highlight.danger{border-color:#c0392b;background:#1a0a0a}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem}
+thead tr{background:var(--v1)}
+thead th{padding:.7rem 1rem;text-align:left;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:1px;color:white;font-weight:700}
+tbody tr:nth-child(odd){background:var(--dark2)}
+tbody tr:nth-child(even){background:var(--dark3)}
+td{padding:.7rem 1rem;color:var(--muted);vertical-align:top}
+td:first-child{color:var(--white);font-weight:500}
+td.no{color:#c0392b}
+td.ok{color:#27ae60}
+ul{margin:.5rem 0 1rem 1.5rem}
+li{font-size:.88rem;color:var(--muted);margin:.3rem 0}
+.acceptance-box{background:var(--dark2);border:1px solid var(--v1);padding:1.5rem;margin:2rem 0;display:flex;align-items:flex-start;gap:1rem}
+.acceptance-box input[type=checkbox]{width:18px;height:18px;margin-top:3px;accent-color:var(--v1);flex-shrink:0;cursor:pointer}
+.acceptance-box label{font-size:.85rem;color:var(--white);line-height:1.6;cursor:pointer}
+.acceptance-box label a{color:var(--v2);text-decoration:none}
+footer-bar{display:block;text-align:center;padding:2rem;border-top:1px solid var(--border);font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)}
+footer-bar a{color:var(--v2);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">THÉO HAMEL</a>
+  <a class="nav-back" href="index.html">← Retour au catalogue</a>
+</nav>
+
+<div class="container">
+
+  <p class="page-sub">beats-theohamel.com</p>
+  <h1 class="page-title">CGV / CGU</h1>
+  <p class="page-date">Conditions Générales de Vente et d'Utilisation — En vigueur au 1er janvier 2024<br>Éditeur : Théo HAMEL — contact@beats-theohamel.com</p>
+
+  <div class="toc">
+    <div class="toc-title">Sommaire</div>
+    <a href="#art1">1. Objet et champ d'application</a>
+    <a href="#art2">2. Identification du vendeur</a>
+    <a href="#art3">3. Catalogue et licences disponibles</a>
+    <a href="#art4">4. Prix et paiement</a>
+    <a href="#art5">5. Livraison</a>
+    <a href="#art6">6. Droit de rétractation</a>
+    <a href="#art7">7. Droits accordés selon la licence</a>
+    <a href="#art8">8. Usages interdits</a>
+    <a href="#art9">9. Royalties et reversements</a>
+    <a href="#art10">10. Propriété intellectuelle</a>
+    <a href="#art11">11. Responsabilité</a>
+    <a href="#art12">12. Résiliation</a>
+    <a href="#art13">13. Données personnelles (RGPD)</a>
+    <a href="#art14">14. Droit applicable et litiges</a>
+    <a href="#art15">15. Acceptation</a>
+  </div>
+
+  <!-- ART 1 -->
+  <h2 id="art1">Article 1 — Objet et champ d'application</h2>
+  <p>Les présentes Conditions Générales de Vente et d'Utilisation (ci-après « CGV/CGU ») régissent l'ensemble des ventes de licences musicales réalisées sur le site <strong>beats-theohamel.com</strong> (ci-après « le Site »).</p>
+  <p>Toute commande passée sur le Site implique l'acceptation pleine, entière et sans réserve des présentes CGV/CGU. Cette acceptation est formalisée par la case à cocher obligatoire présente avant tout paiement.</p>
+  <div class="highlight warn">
+    Ces CGV/CGU constituent le socle contractuel de toute relation entre le Producteur et l'Acheteur. Le contrat de licence individuel remis à chaque acheteur précise et complète les présentes conditions pour chaque vente spécifique.
+  </div>
+
+  <!-- ART 2 -->
+  <h2 id="art2">Article 2 — Identification du vendeur</h2>
+  <p>Le Site est édité et exploité par :</p>
+  <div class="highlight">
+    <strong>Théo HAMEL</strong><br>
+    Producteur de musique indépendant<br>
+    Site web : beats-theohamel.com<br>
+    Email : contact@beats-theohamel.com<br>
+    Activité : vente de licences d'utilisation de compositions musicales originales
+  </div>
+
+  <!-- ART 3 -->
+  <h2 id="art3">Article 3 — Catalogue et licences disponibles</h2>
+  <p>Le Site propose à la vente des compositions musicales originales (ci-après « Beats » ou « Prods ») sous forme de licences d'utilisation. Quatre types de licences sont disponibles :</p>
+
+  <table>
+    <thead><tr><th>Licence</th><th>Prix de base</th><th>Format livré</th><th>Streams max</th></tr></thead>
+    <tbody>
+      <tr><td>BASIC</td><td>30€</td><td>MP3 320kbps</td><td>1 000 000</td></tr>
+      <tr><td>PREMIUM</td><td>90€</td><td>WAV + MP3</td><td>1 000 000</td></tr>
+      <tr><td>GOLD</td><td>150€</td><td>WAV + MP3 + Stems</td><td>1 000 000</td></tr>
+      <tr><td>EXCLUSIF</td><td>400€</td><td>Projet complet + tous fichiers</td><td>Illimités</td></tr>
+    </tbody>
+  </table>
+
+  <p>Le Producteur se réserve le droit de modifier les prix et le catalogue à tout moment. Les prix applicables sont ceux affichés au moment de la commande.</p>
+
+  <!-- ART 4 -->
+  <h2 id="art4">Article 4 — Prix et paiement</h2>
+  <p>Tous les prix sont indiqués en euros (€) toutes taxes comprises. Le paiement s'effectue exclusivement via <strong>PayPal</strong>, plateforme sécurisée de paiement en ligne. Le Producteur ne conserve aucune donnée bancaire.</p>
+  <p>La commande est considérée comme définitive après confirmation du paiement par PayPal. L'Acheteur reçoit une confirmation de paiement par email.</p>
+  <div class="highlight warn">
+    Pour la licence Exclusif, le Producteur recommande un échange préalable par email avant toute transaction afin de valider la disponibilité du Beat et les modalités de cession.
+  </div>
+
+  <!-- ART 5 -->
+  <h2 id="art5">Article 5 — Livraison</h2>
+  <p>Les fichiers audio et le contrat de licence personnalisé sont livrés par email à l'adresse fournie lors de la commande, <strong>dans un délai maximum de 24 heures</strong> suivant la confirmation du paiement.</p>
+  <p>En cas de non-réception dans ce délai, l'Acheteur est invité à contacter le Producteur à contact@beats-theohamel.com. L'absence de livraison due à une adresse email erronée fournie par l'Acheteur ne saurait engager la responsabilité du Producteur.</p>
+
+  <!-- ART 6 -->
+  <h2 id="art6">Article 6 — Droit de rétractation</h2>
+  <div class="highlight danger">
+    Conformément à l'article L221-28 du Code de la consommation, <strong>le droit de rétractation ne s'applique pas</strong> aux contenus numériques fournis sur un support non matériel dont l'exécution a commencé avec l'accord préalable du consommateur, qui a reconnu renoncer à son droit de rétractation. En acceptant les présentes CGV/CGU et en procédant au paiement, l'Acheteur reconnaît expressément renoncer à son droit de rétractation dès la livraison des fichiers.
+  </div>
+  <p>Aucun remboursement ne sera accordé après livraison des fichiers audio.</p>
+
+  <!-- ART 7 -->
+  <h2 id="art7">Article 7 — Droits accordés selon la licence</h2>
+
+  <h3>7.1 Licences non exclusives (Basic, Premium, Gold)</h3>
+  <p>Les licences Basic, Premium et Gold accordent une licence <strong>non exclusive, personnelle, non cessible et non transférable</strong>. Les droits suivants s'appliquent à toutes ces licences :</p>
+  <table>
+    <thead><tr><th>Usage</th><th>Basic</th><th>Premium</th><th>Gold</th></tr></thead>
+    <tbody>
+      <tr><td>Streaming numérique (1M streams max)</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+      <tr><td>Clip vidéo officiel</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+      <tr><td>Réseaux sociaux</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+      <tr><td>Usage promotionnel / EPK</td><td class="no">✗</td><td class="no">✗</td><td class="ok">✓</td></tr>
+      <tr><td>Ventes physiques (CD, vinyle)</td><td class="no">✗ INTERDIT</td><td class="no">✗ INTERDIT</td><td class="no">✗ INTERDIT</td></tr>
+      <tr><td>Diffusion radio</td><td class="no">✗ INTERDIT</td><td class="no">✗ INTERDIT</td><td class="no">✗ INTERDIT</td></tr>
+      <tr><td>Synchronisation (pub, film, série)</td><td class="no">✗ INTERDIT</td><td class="no">✗ INTERDIT</td><td class="no">✗ INTERDIT</td></tr>
+    </tbody>
+  </table>
+  <p>Le dépassement du seuil de 1 000 000 streams impose la mise à niveau vers une licence supérieure dans un délai de 30 jours. Passé ce délai, la licence est résiliée de plein droit.</p>
+
+  <h3>7.2 Licence Exclusif</h3>
+  <p>La licence Exclusif accorde à l'Acheteur <strong>les droits d'exploitation exclusifs</strong> sur le Beat pour une durée illimitée et sur le territoire mondial. Tous les usages sont autorisés (streaming illimité, radio, synchronisation, ventes physiques, clip vidéo). Le Beat est retiré du catalogue dans les 72h suivant le paiement intégral.</p>
+  <div class="highlight warn">
+    Même en licence Exclusif, le Producteur conserve ses droits moraux inaliénables ainsi qu'une participation financière permanente de 5% sur les revenus nets du master (voir Article 9.2). Cette participation est due à perpétuité et doit être transmise à tout cessionnaire ultérieur.
+  </div>
+
+  <!-- ART 8 -->
+  <h2 id="art8">Article 8 — Usages interdits à toutes les licences</h2>
+  <ul>
+    <li>Revente, sous-licence ou cession de la licence à un tiers sans accord écrit préalable du Producteur ;</li>
+    <li>Déclaration du Beat comme œuvre propre auprès de la SACEM, ASCAP, BMI ou tout organisme de gestion collective ;</li>
+    <li>Utilisation dans des contenus haineux, discriminatoires, pornographiques ou illégaux ;</li>
+    <li>Utilisation dans un NFT, token numérique ou actif blockchain sans accord écrit préalable ;</li>
+    <li>Modification du Beat à des fins de revente en tant que nouveau beat instrumental ;</li>
+    <li>Utilisation des stems (Gold/Exclusif) pour créer un nouveau beat destiné à la vente.</li>
+  </ul>
+  <div class="highlight danger">
+    Toute utilisation radio ou synchronisation avec une licence non exclusive constitue une violation grave exposant l'Acheteur à des dommages et intérêts d'un montant minimum fixé à cinq (5) fois le prix de la licence Exclusif en vigueur.
+  </div>
+
+  <!-- ART 9 -->
+  <h2 id="art9">Article 9 — Royalties et reversements</h2>
+
+  <h3>9.1 Licences non exclusives — Royalties dégressives</h3>
+  <p>Pour toute exploitation commerciale d'un Beat acquis sous licence Basic, Premium ou Gold, l'Acheteur s'engage à reverser au Producteur une redevance calculée par tranches sur les revenus nets générés :</p>
+  <table>
+    <thead><tr><th>Tranche de revenus nets</th><th>Taux reversé au Producteur</th></tr></thead>
+    <tbody>
+      <tr><td>0 € – 10 000 €</td><td style="color:#9D5CF6;font-weight:700">50 %</td></tr>
+      <tr><td>10 001 € – 50 000 €</td><td style="color:#9D5CF6;font-weight:700">35 %</td></tr>
+      <tr><td>50 001 € – 200 000 €</td><td style="color:#9D5CF6;font-weight:700">20 %</td></tr>
+      <tr><td>Au-delà de 200 001 €</td><td style="color:#9D5CF6;font-weight:700">10 %</td></tr>
+    </tbody>
+  </table>
+  <p>Les revenus nets s'entendent après déduction des seules commissions de distribution (DistroKid, TuneCore, etc.). Toute autre déduction est exclue. Les tranches sont calculées cumulativement sur la durée de vie du Beat. Des relevés trimestriels détaillés doivent être adressés au Producteur. Tout retard de paiement supérieur à 30 jours entraîne une pénalité automatique de 2% par mois de retard, sans mise en demeure préalable.</p>
+
+  <h3>9.2 Licence Exclusif — Participation au master</h3>
+  <p>Le Producteur conserve une participation permanente et irrévocable de <strong>5% sur les revenus nets du master</strong> incluant : streaming, téléchargements, synchronisation, radio, ventes physiques nettes et Content ID YouTube. Cette participation est due à perpétuité. En cas de revente du master à un tiers, l'Acheteur est tenu d'intégrer cette clause dans tout contrat de cession ultérieur.</p>
+  <p>Le Producteur dispose d'un droit d'audit annuel. En cas d'écart supérieur à 3% entre les déclarations de l'Acheteur et les données vérifiées, les frais d'audit sont à la charge exclusive de l'Acheteur et les sommes dues sont majorées de 25%.</p>
+
+  <!-- ART 10 -->
+  <h2 id="art10">Article 10 — Propriété intellectuelle</h2>
+  <p>Le Producteur est et demeure l'auteur-compositeur des Beats. Les droits moraux sont inaliénables et ne peuvent faire l'objet d'aucune cession. La présente licence ne constitue pas une cession des droits d'auteur, sauf pour la partie exploitation définie à l'Article 7.2 pour la licence Exclusif.</p>
+  <p>Pour les licences non exclusives, le crédit <strong>"Prod. Théo Hamel | beats-theohamel.com"</strong> est obligatoire dans les métadonnées audio, les descriptions de plateformes et tout livret. Son omission constitue une violation des présentes CGV/CGU et entraîne la résiliation immédiate de la licence sans remboursement.</p>
+  <p>Le Producteur conserve le droit d'utiliser les Beats à des fins promotionnelles (portfolio, démos, extraits) pour les licences non exclusives.</p>
+
+  <!-- ART 11 -->
+  <h2 id="art11">Article 11 — Responsabilité</h2>
+  <p>Le Producteur garantit être l'unique créateur des Beats et détenir tous les droits nécessaires à la conclusion des présentes. La responsabilité du Producteur est en tout état de cause limitée au montant de la licence payée. Le Producteur ne saurait être tenu responsable des pertes de revenus, manques à gagner ou préjudices indirects de l'Acheteur.</p>
+  <p>L'Acheteur est seul responsable de l'utilisation qu'il fait du Beat et des contenus qu'il y associe.</p>
+
+  <!-- ART 12 -->
+  <h2 id="art12">Article 12 — Résiliation</h2>
+  <p>La licence est résiliée automatiquement, sans remboursement, en cas de :</p>
+  <ul>
+    <li>Non-paiement des royalties ou de la participation master dans les délais ;</li>
+    <li>Dépassement des seuils d'utilisation sans mise à niveau dans les 30 jours ;</li>
+    <li>Violation des Articles 7, 8, 9 ou 10 des présentes CGV/CGU ;</li>
+    <li>Déclaration frauduleuse auprès d'un organisme de droits ;</li>
+    <li>Utilisation radio ou synchronisation sans licence Exclusif.</li>
+  </ul>
+  <p>En cas de résiliation, l'Acheteur dispose de 48 heures pour retirer le Beat de toutes les plateformes. Le non-respect de cette obligation expose l'Acheteur à des dommages et intérêts supplémentaires.</p>
+
+  <!-- ART 13 -->
+  <h2 id="art13">Article 13 — Données personnelles (RGPD)</h2>
+  <p>Le Producteur collecte uniquement les données nécessaires au traitement des commandes : nom/nom d'artiste, adresse email et référence de paiement PayPal. Ces données sont utilisées exclusivement pour la livraison des fichiers, l'émission du contrat de licence et, avec le consentement explicite de l'Acheteur, l'envoi d'informations sur les nouvelles productions.</p>
+  <p>Conformément au Règlement Général sur la Protection des Données (RGPD), l'Acheteur dispose d'un droit d'accès, de rectification, d'effacement et de portabilité de ses données. Ces droits s'exercent par email à contact@beats-theohamel.com.</p>
+
+  <!-- ART 14 -->
+  <h2 id="art14">Article 14 — Droit applicable et règlement des litiges</h2>
+  <p>Les présentes CGV/CGU sont soumises au droit français. En cas de litige, les parties s'efforceront de trouver une solution amiable dans un délai de 30 jours suivant la notification du différend. À défaut d'accord, le litige sera soumis à la compétence exclusive des tribunaux compétents du domicile du Producteur.</p>
+  <p>La version française des présentes CGV/CGU fait foi en cas de traduction.</p>
+
+  <!-- ART 15 -->
+  <h2 id="art15">Article 15 — Acceptation</h2>
+  <p>La validation de la commande et du paiement sur beats-theohamel.com vaut acceptation pleine et entière des présentes CGV/CGU. Cette acceptation est formalisée par la case à cocher obligatoire ci-dessous, présente sur chaque formulaire d'achat.</p>
+
+  <div class="acceptance-box">
+    <input type="checkbox" id="cgv-accept">
+    <label for="cgv-accept">
+      J'ai lu et j'accepte les <a href="cgv.html">Conditions Générales de Vente et d'Utilisation</a> de beats-theohamel.com, y compris les conditions de licence, les royalties dégressives et, pour la licence Exclusif, la participation permanente de 5% sur les revenus du master. Je reconnais renoncer à mon droit de rétractation conformément à l'article L221-28 du Code de la consommation.
+    </label>
+  </div>
+
+  <footer-bar>
+    beats-theohamel.com &nbsp;·&nbsp; © 2024 Théo HAMEL &nbsp;·&nbsp;
+    <a href="index.html">Retour au catalogue</a> &nbsp;·&nbsp;
+    <a href="mailto:contact@beats-theohamel.com">contact@beats-theohamel.com</a>
+  </footer-bar>
+
+</div>
+</body>
+</html>
