@@ -5,3 +5,6 @@ npm-debug.log*
 dist
 frontend/node_modules
 frontend/dist
+data/
+beats/*
+!beats/LISEZMOI.md

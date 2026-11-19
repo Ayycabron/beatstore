@@ -1,0 +1,134 @@
+{
+  "currency": "€",
+  "note": "Toutes les licences sont livrées en WAV. Aucun MP3 n'est vendu à l'utilisation.",
+  "licenses": [
+    {
+      "id": "wav",
+      "name": "WAV Standard",
+      "pitch": "Pour sortir un premier son proprement.",
+      "price": 50,
+      "priceLabel": "50 €",
+      "exclusive": false,
+      "files": ["Fichier WAV 24 bits sans tag vocal"],
+      "durationYears": 10,
+      "limits": {
+        "streams": 100000,
+        "videos": 1,
+        "videoViews": 100000,
+        "sales": 2000,
+        "radio": false,
+        "live": true,
+        "stems": false,
+        "sync": false,
+        "contentId": false
+      }
+    },
+    {
+      "id": "premium",
+      "name": "WAV Premium",
+      "pitch": "Pour un single que tu vas vraiment pousser.",
+      "price": 90,
+      "priceLabel": "90 €",
+      "exclusive": false,
+      "files": ["Fichier WAV 24 bits sans tag vocal"],
+      "durationYears": 10,
+      "limits": {
+        "streams": 500000,
+        "videos": 3,
+        "videoViews": 500000,
+        "sales": 10000,
+        "radio": true,
+        "live": true,
+        "stems": false,
+        "sync": false,
+        "contentId": false
+      }
+    },
+    {
+      "id": "trackout",
+      "name": "Trackout (WAV + pistes)",
+      "pitch": "Les pistes séparées pour un mix studio.",
+      "price": 150,
+      "priceLabel": "150 €",
+      "exclusive": false,
+      "files": ["Fichier WAV 24 bits sans tag vocal", "Pistes séparées (stems) en WAV"],
+      "durationYears": 10,
+      "limits": {
+        "streams": 1000000,
+        "videos": null,
+        "videoViews": 1000000,
+        "sales": 50000,
+        "radio": true,
+        "live": true,
+        "stems": true,
+        "sync": false,
+        "contentId": false
+      }
+    },
+    {
+      "id": "unlimited",
+      "name": "Illimitée",
+      "pitch": "Aucun plafond, sans bloquer la prod.",
+      "price": 250,
+      "priceLabel": "250 €",
+      "exclusive": false,
+      "files": ["Fichier WAV 24 bits sans tag vocal", "Pistes séparées (stems) en WAV"],
+      "durationYears": 10,
+      "limits": {
+        "streams": null,
+        "videos": null,
+        "videoViews": null,
+        "sales": null,
+        "radio": true,
+        "live": true,
+        "stems": true,
+        "sync": false,
+        "contentId": false
+      }
+    },
+    {
+      "id": "exclusive",
+      "name": "Exclusivité",
+      "pitch": "La prod est à toi seul, retirée du catalogue.",
+      "price": 300,
+      "priceMax": 500,
+      "priceLabel": "300 à 500 €",
+      "exclusive": true,
+      "files": ["Fichier WAV 24 bits sans tag vocal", "Pistes séparées (stems) en WAV"],
+      "durationYears": null,
+      "limits": {
+        "streams": null,
+        "videos": null,
+        "videoViews": null,
+        "sales": null,
+        "radio": true,
+        "live": true,
+        "stems": true,
+        "sync": true,
+        "contentId": true
+      }
+    },
+    {
+      "id": "sync",
+      "name": "Synchro & contenus",
+      "pitch": "Sur devis : la prod sans voix sous une pub, un film, une vidéo ou un podcast.",
+      "price": 150,
+      "priceLabel": "Dès 150 €",
+      "exclusive": false,
+      "sync": true,
+      "files": ["Fichier WAV 24 bits sans tag vocal"],
+      "durationYears": null,
+      "limits": {
+        "streams": null,
+        "videos": null,
+        "videoViews": null,
+        "sales": null,
+        "radio": false,
+        "live": false,
+        "stems": false,
+        "sync": true,
+        "contentId": false
+      }
+    }
+  ]
+}

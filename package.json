@@ -1,20 +1,24 @@
 {
-  "name": "beatstore-backend",
-  "version": "1.0.0",
-  "description": "Beatstore backend — Node/Express + Dropbox",
-  "main": "server.js",
+  "name": "beatstore",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Vitrine de prods : écoute, demande par e-mail, licences envoyées à la main.",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "dev:front": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend install --include=dev && npm --prefix frontend run build",
+    "contrats": "node scripts/build-contracts.js",
+    "dropbox-token": "node scripts/dropbox-token.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "dropbox": "^10.34.0",
-    "express": "^4.18.3",
-    "node-fetch": "^2.7.0"
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.16"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }

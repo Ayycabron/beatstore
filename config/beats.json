@@ -1,0 +1,10 @@
+{
+  "_comment": "Réglages par prod (clé = slug du titre, ex: 'midnight-drip'). Tout est optionnel. exclusivePrice: prix de l'exclu (300-500). sold: true pour retirer la prod du site après une exclu. deliveryLink + deliveryLinkExpires: lien envoyé automatiquement aux demandes (sinon tu l'envoies depuis /admin).",
+  "beats": {
+    "exemple-de-prod": {
+      "exclusivePrice": 400,
+      "sold": false,
+      "featured": false
+    }
+  }
+}
