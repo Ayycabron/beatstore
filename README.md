@@ -68,10 +68,20 @@ Le plan gratuit de Render met le site en veille après 15 min sans visite (premi
 ## Structure
 
 ```
-server/       API Express (prods, streaming, demandes, admin, e-mails)
-shared/       générateur de contrats (utilisé par le site et par npm run contrats)
-frontend/     site React (vitrine, /licences, /mentions, /admin)
-config/       site.json, licenses.json, beats.json
-contrats/     contrats vierges en Markdown et PDF
-archive/      anciennes versions (Netlify v1, Express v1)
+server/            API Express
+  index.js         routes (prods, streaming, waveforms, demandes, admin)
+  beats.js         lecture du catalogue (Dropbox ou dossier local)
+  peaks.js         waveforms réelles (décodage MP3 en WASM, mis en cache)
+  emails.js        modèles d'e-mails · mailer.js envoi SMTP · store.js stockage JSON
+shared/contract.js générateur de contrats (site + npm run contrats)
+frontend/src/
+  player/          store du lecteur (un seul <audio>, file d'attente, raccourcis, Media Session)
+  components/      Header, Tracklist, Waveform, PlayerDock, RequestSheet, LicenseCards…
+  pages/           Home, Licences, Mentions, admin/ (Admin, RequestCard, ContractGen)
+  styles/global.css  tokens de design et utilitaires (le reste en CSS Modules)
+config/            site.json, licenses.json, beats.json
+contrats/          contrats vierges en Markdown et PDF
+archive/           anciennes versions
 ```
+
+Raccourcis du lecteur : `Espace` lecture/pause, `←` `→` ±5 s, `Maj` + `←` `→` prod précédente/suivante.

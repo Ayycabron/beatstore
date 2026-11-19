@@ -1,0 +1,28 @@
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  position: relative; display: flex; flex-direction: column; gap: 14px; padding: 24px;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--r-lg);
+  transition: border-color 0.3s, transform 0.5s var(--ease), background-color 0.3s;
+}
+.card:hover { border-color: var(--line-strong); transform: translateY(-3px); }
+.featured { border-color: color-mix(in oklab, var(--accent) 55%, transparent); background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 9%, var(--bg-card)), var(--bg-card) 55%); }
+.featured:hover { border-color: var(--accent); }
+.exclusive {
+  background:
+    radial-gradient(120% 80% at 100% 0%, color-mix(in oklab, var(--ambient) 35%, transparent), transparent 60%),
+    var(--bg-card);
+}
+.top { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 22px; }
+.top h3 { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: -0.005em; }
+.price { display: flex; align-items: baseline; gap: 6px; }
+.price span { font-family: var(--font-display); font-weight: 800; font-stretch: 120%; font-size: 44px; line-height: 1; letter-spacing: -0.03em; }
+.price small { font-family: var(--font-mono); font-size: 13px; color: var(--text-2); }
+.pitch { margin: 0; color: var(--text-2); font-size: 14px; min-height: 42px; }
+.features { list-style: none; margin: 4px 0 0; padding: 16px 0 0; border-top: 1px dashed var(--line-strong); display: flex; flex-direction: column; gap: 9px; font-size: 14px; }
+.features li { display: flex; align-items: center; gap: 10px; }
+.tick { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; background: var(--accent-dim); color: var(--accent); }
+.off { color: var(--text-3); }
+.off .tick { background: rgba(255, 255, 255, 0.05); color: var(--text-3); }

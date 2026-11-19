@@ -1,0 +1,9 @@
+.page { max-width: 760px; padding: clamp(40px, 7vw, 96px) 0 0; }
+.h1 { font-size: clamp(40px, 6.5vw, 84px); margin: 20px 0 40px; }
+.page section { padding: 28px 0; border-top: 1px solid var(--line); }
+.page h2 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
+.page p { color: var(--text-2); margin: 0 0 10px; }
+.facts { display: grid; grid-template-columns: 180px 1fr; gap: 12px 24px; margin: 0 0 16px; }
+.facts dt { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); padding-top: 3px; }
+.facts dd { margin: 0; color: var(--text-2); }
+@media (max-width: 600px) { .facts { grid-template-columns: 1fr; gap: 4px; } .facts dd { margin-bottom: 12px; } }

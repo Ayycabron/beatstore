@@ -5,6 +5,7 @@ import { randomUUID, timingSafeEqual, createHash } from 'node:crypto';
 import { config, site, licenses, ROOT, beatsSource, storageBackend } from './config.js';
 import { getBeats, findBeat, publicBeat, pipeFile, invalidateBeats } from './beats.js';
 import * as store from './store.js';
+import { getPeaks, cachedPeaks } from './peaks.js';
 import { sendMail, mailReady } from './mailer.js';
 import { producerNotification, clientAck, clientLink, clientOffers, USAGES } from './emails.js';
 
@@ -28,7 +29,7 @@ app.get('/api/config', (req, res) => {
 
 app.get('/api/beats', wrap(async (req, res) => {
   const beats = await getBeats();
-  res.json(beats.map(publicBeat));
+  res.json(beats.map((b) => ({ ...publicBeat(b), duration: cachedPeaks(b)?.duration ?? null })));
 }));
 
 // Lecture audio : streaming uniquement, pas de lien de téléchargement.
@@ -38,6 +39,18 @@ app.get('/api/stream/:slug', wrap(async (req, res) => {
   const beat = await findBeat(req.params.slug);
   if (!beat || beat.sold) return res.status(404).end();
   await pipeFile(beat.audioRef, req, res, { cacheControl: 'private, no-store' });
+}));
+
+app.get('/api/peaks/:slug', wrap(async (req, res) => {
+  const beat = await findBeat(req.params.slug);
+  if (!beat || beat.sold) return res.status(404).json({ error: 'Prod introuvable.' });
+  try {
+    const { peaks, duration } = await getPeaks(beat);
+    res.set('Cache-Control', 'public, max-age=3600').json({ peaks, duration });
+  } catch (err) {
+    console.error('[peaks]', beat.slug, err.message);
+    res.status(422).json({ error: 'Waveform indisponible.' });
+  }
 }));
 
 app.get('/api/cover/:slug', wrap(async (req, res) => {

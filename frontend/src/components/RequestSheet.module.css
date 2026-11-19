@@ -1,0 +1,65 @@
+.dialog {
+  padding: 0; border: 0; background: transparent; color: var(--text);
+  width: 100%; max-width: 520px; max-height: 100dvh; overflow: visible;
+}
+.dialog::backdrop { background: rgba(5, 5, 7, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: fade 0.3s var(--ease); }
+.dialog[open] .sheet { animation: pop 0.45s var(--ease); }
+.closing .sheet { animation: popOut 0.22s var(--ease) forwards; }
+.closing::backdrop { animation: fade 0.22s var(--ease) reverse forwards; }
+@keyframes fade { from { opacity: 0; } }
+@keyframes pop { from { opacity: 0; transform: translateY(16px) scale(0.97); } }
+@keyframes popOut { to { opacity: 0; transform: translateY(16px) scale(0.97); } }
+
+.sheet {
+  position: relative; max-height: calc(100dvh - 32px); overflow-y: auto; overscroll-behavior: contain;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--ambient) 14%, var(--bg-card)), var(--bg-card) 180px);
+  border: 1px solid var(--line-strong); border-radius: var(--r-lg); padding: 24px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.9);
+}
+.grabber { display: none; }
+.close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.06); color: var(--text-2); transition: background-color 0.2s, color 0.2s; }
+.close:hover { background: rgba(255, 255, 255, 0.12); color: var(--text); }
+
+.beat { display: flex; align-items: center; gap: 16px; padding-right: 40px; }
+.title { font-family: var(--font-display); font-weight: 800; font-stretch: 118%; font-size: 24px; line-height: 1.05; text-transform: uppercase; margin: 6px 0 2px; letter-spacing: -0.01em; }
+
+.form { display: flex; flex-direction: column; gap: 16px; margin-top: 22px; }
+.lead { margin: 0; color: var(--text-2); font-size: 14.5px; }
+.emailField { position: relative; color: var(--text-3); }
+.emailField svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.emailField input { height: 54px; padding-left: 46px; font-size: 16px; border-radius: 14px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.usage { border: 0; padding: 0; margin: 0; min-width: 0; }
+.usageChips { display: flex; flex-wrap: wrap; gap: 6px; }
+.usageChips :global(.chip) { height: auto; min-height: 34px; padding: 6px 12px; white-space: normal; text-align: left; }
+.addMsg { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; border: 0; background: none; padding: 0; color: var(--text-2); font-size: 13.5px; font-weight: 500; }
+.addMsg:hover { color: var(--text); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--text-2); line-height: 1.5; cursor: pointer; }
+.consent input { width: 18px; height: 18px; margin: 1px 0 0; flex-shrink: 0; accent-color: var(--accent); }
+.consent a { color: var(--text); }
+.error { padding: 10px 14px; border-radius: 12px; background: rgba(248, 113, 113, 0.1); color: var(--danger); font-size: 14px; }
+
+.done { text-align: center; padding: 28px 8px 8px; display: flex; flex-direction: column; align-items: center; }
+.done h3 { font-family: var(--font-display); font-weight: 800; font-stretch: 118%; font-size: 28px; text-transform: uppercase; margin: 18px 0 6px; }
+.done p { margin: 0 0 8px; max-width: 380px; }
+.small { font-size: 13px; color: var(--text-3); margin-bottom: 20px !important; }
+.checkmark {
+  width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent); color: var(--accent-ink);
+  box-shadow: 0 0 0 10px var(--accent-dim), 0 0 60px color-mix(in oklab, var(--accent) 50%, transparent);
+  animation: popCheck 0.6s var(--ease);
+}
+@keyframes popCheck { 0% { transform: scale(0.4); opacity: 0; } 60% { transform: scale(1.08); } }
+
+@media (max-width: 560px) {
+  .dialog { max-width: none; margin: auto 0 0; }
+  .sheet { max-height: 92dvh; border-radius: 24px 24px 0 0; border-bottom: 0; padding: 14px 18px calc(18px + env(safe-area-inset-bottom)); }
+  .dialog[open] .sheet { animation: slideUp 0.45s var(--ease); }
+  .closing .sheet { animation: slideDown 0.22s var(--ease) forwards; }
+  .grabber { display: block; width: 40px; height: 4px; border-radius: 4px; background: var(--line-strong); margin: 0 auto 14px; }
+  .close { top: 20px; }
+  .row2 { grid-template-columns: 1fr; }
+}
+@keyframes slideUp { from { transform: translateY(100%); } }
+@keyframes slideDown { to { transform: translateY(100%); } }
